@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Arc2D;
 
 /**
- * Created by Steve on 9/20/2014.
+ * Created by Steve Dylon on 9/20/2014.
  */
 public class SidePanel extends JPanel {
 
