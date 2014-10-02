@@ -20,19 +20,14 @@ public class SidePanel extends JPanel {
         ButtonGroup buttonGroup = new ButtonGroup();
 
         inZoomButton = new JButton("Zoom +");
-        inZoomButton.setBounds(new Rectangle(60, 50, 35,25));
         outZoomButton = new JButton("Zoom -");
-        outZoomButton.setBounds(new Rectangle(80, 60, 35, 25));
-
 
         tempButton = new JButton("°C/°F");
-        tempButton.setBounds(new Rectangle(60, 70, 35, 25));
 
         String unitVar = "°C";
         temperatureLabel = new JLabel(Double.toString(Main.incomingVal) + unitVar);
         //temperatureLabel.setSize(20,20); TODO: Possibly adjust incomingVal size
         graphTypeButton = new JButton("Continuous/Not");
-        graphTypeButton.setBounds(new Rectangle(60, 80, 25, 25));
         String varString = "Continuous";
         graphTypeLabel = new JLabel(varString);
 

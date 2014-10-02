@@ -7,6 +7,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Steve on 9/21/2014.
@@ -33,10 +34,16 @@ public class TempChart extends JPanel{
 
     public JFreeChart createGraph(){
 
-        chart = ChartFactory.createXYLineChart("Temperature vs Time Graph","Time (s)","Temperature (°C)",dataCollection);
+        chart = ChartFactory.createXYLineChart("Temperature vs Time Graph","Elapsed Time (s)","Temperature (°C)",dataCollection);
+        chart.removeLegend();
+
+        Font axisTitlesFont = new Font("Dialog", Font.PLAIN, 30);
+        Font axisNumFont = new Font("Dialog", Font.PLAIN, 25);
 
         plot = (XYPlot) chart.getPlot();
         plot.getDomainAxis().setInverted(true);
+        plot.getDomainAxis().setLabelFont(axisTitlesFont);
+        plot.getDomainAxis().setTickLabelFont(axisNumFont);
         if(mode60)
             plot.getDomainAxis().setRange(0,60);
         else
@@ -45,6 +52,8 @@ public class TempChart extends JPanel{
 
 
         NumberAxis yAxis = (NumberAxis)plot.getRangeAxis();
+        yAxis.setLabelFont(axisTitlesFont);
+        yAxis.setTickLabelFont(axisNumFont);
         yAxis.setRange(10, 50);
         yAxis.setAutoRangeIncludesZero(false);
         yAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
