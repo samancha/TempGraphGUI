@@ -1,7 +1,3 @@
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.xy.XYSeries;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -10,14 +6,12 @@ import java.util.Random;
  * Created by Steve on 9/20/2014.
  */
 
-
-
 public class Main {
 
     private static final Random randNum = new Random();
     public static double incomingVal;
     public static void main(String [] Args){
-
+        System.out.print(true);
         FrameContainer frameContainer = new FrameContainer();
         frameContainer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameContainer.setSize(700, 550);

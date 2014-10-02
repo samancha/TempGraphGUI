@@ -23,10 +23,9 @@ public class TempChart extends JPanel{
     private Double [] temperaturesArray = new Double[300];
 
     boolean mode60= true;
-
+    boolean modeError = false;
 
     public TempChart(){
-        System.out.println("In Constructor!");
         chart = createGraph();
         chartPanel = new ChartPanel(chart);
         add(chartPanel);
@@ -50,7 +49,6 @@ public class TempChart extends JPanel{
             plot.getDomainAxis().setRange(0,300);
         plot.getDomainAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
-
         NumberAxis yAxis = (NumberAxis)plot.getRangeAxis();
         yAxis.setLabelFont(axisTitlesFont);
         yAxis.setTickLabelFont(axisNumFont);
@@ -61,22 +59,30 @@ public class TempChart extends JPanel{
         return chart;
     }
 
-    public void createDataSet(double newTempVal){    // add dataset as a parameter input
+    public void createDataSet(double newTempVal){    // add dataSet as a parameter input
         xyData = new XYSeries("Graph Data");
 
-        // Todo: make if statement saying if 60
-
-        for(int i= temperaturesArray.length - 1; i >= 0 ; i--){
-            if(i != 0){
-                temperaturesArray[i] = temperaturesArray[i-1];
-            }else if (i == 0){
-                temperaturesArray[i] = newTempVal;
+        if(modeError){
+            for(int i = temperaturesArray.length -1; i >= 0; i--){
+                for (int j = 10; j < 51; j++) {
+                    for (double b = 1; b < 42; b++) {
+                        xyData.add((double) i + (1.0/b), j);
+                    }
+                }
             }
-            xyData.add(i,temperaturesArray[i]);
         }
+        else{
+            for(int i= temperaturesArray.length - 1; i >= 0 ; i--){
+                if(i != 0){
+                    temperaturesArray[i] = temperaturesArray[i-1];
+                }else if (i == 0){
+                    temperaturesArray[i] = newTempVal;
+                }
+                xyData.add(i,temperaturesArray[i]);
 
+            }
+        }
         dataCollection = new XYSeriesCollection(xyData);
-
     }
 
     public void updateGraph(){

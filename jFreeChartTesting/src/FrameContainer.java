@@ -1,15 +1,7 @@
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.block.BorderArrangement;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Arc2D;
-import java.util.Locale;
 
 /**
  * Created by Steve on 9/20/2014.
@@ -28,11 +20,11 @@ public class FrameContainer extends JFrame {
         tempChart = new TempChart();
         tempChart.validate();
 
-        setLayout(new BorderLayout());
-        add(tempChart, BorderLayout.CENTER);
-        add(sidePanel, BorderLayout.SOUTH);
-        //setSize(tempChart.getWidth(),tempChart.getHeight());
 
+        setLayout(new BorderLayout());
+        add(tempChart, BorderLayout.NORTH);
+        add(sidePanel, BorderLayout.SOUTH);
+        pack();
 
        // Add action listeners here
        sidePanel.inZoomButton.addActionListener(new ActionListener() {
@@ -58,6 +50,9 @@ public class FrameContainer extends JFrame {
            @Override
            public void actionPerformed(ActionEvent e) {
                 sidePanel.bContinuous = !sidePanel.bContinuous;
+                // Testing error mode
+                tempChart.modeError = !tempChart.modeError;
+
                printGraphType();
            }
        });
@@ -72,10 +67,17 @@ public class FrameContainer extends JFrame {
     }
 
     public void printGraphType(){
-        if(!sidePanel.bContinuous)
+        /*
+        if(sidePanel.bContinuous)
             sidePanel.graphTypeLabel.setText("Continuous");
         else
             sidePanel.graphTypeLabel.setText("Not Continuous");
+        */
+        // TESTING ERROR MODE
+        if(tempChart.modeError)
+            sidePanel.graphTypeLabel.setText("Error!");
+        else
+            sidePanel.graphTypeLabel.setText("No Error");
     }
 }
 
