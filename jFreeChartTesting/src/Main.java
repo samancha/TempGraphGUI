@@ -11,11 +11,10 @@ public class Main {
     private static final Random randNum = new Random();
     public static double incomingVal;
     public static void main(String [] Args){
-        System.out.print(true);
         FrameContainer frameContainer = new FrameContainer();
         frameContainer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frameContainer.setSize(700, 550);
-        frameContainer.setMinimumSize(new Dimension(700,550));
+        frameContainer.setSize(720, 520);
+        frameContainer.setMinimumSize(new Dimension(720,520));
         frameContainer.setLocation(200, 100);
         frameContainer.setVisible(true);
 

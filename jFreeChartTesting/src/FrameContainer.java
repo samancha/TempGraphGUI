@@ -64,20 +64,24 @@ public class FrameContainer extends JFrame {
         else
             sidePanel.temperatureLabel.setText(Double.toString((incomingVal*9.0 / 5.0) +32.0) + " °F");
 
+        if(tempChart.modeError)
+            sidePanel.temperatureLabel.setText("Error!");
+
     }
 
     public void printGraphType(){
-        /*
+
         if(sidePanel.bContinuous)
             sidePanel.graphTypeLabel.setText("Continuous");
         else
             sidePanel.graphTypeLabel.setText("Not Continuous");
-        */
-        // TESTING ERROR MODE
+
+        /* TESTING ERROR MODE
         if(tempChart.modeError)
             sidePanel.graphTypeLabel.setText("Error!");
         else
             sidePanel.graphTypeLabel.setText("No Error");
+            */
     }
 }
 
